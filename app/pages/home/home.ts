@@ -5,7 +5,7 @@ import { InstructionsPage } from '../instructions/instructions';
 import { PlayPage } from '../play/play';
 
 @Component({
-  templateUrl: 'build/pages/home/home.html'
+  templateUrl: 'build/pages/home/home.html',
 })
 export class HomePage {
   constructor(public navCtrl: NavController) {
@@ -13,10 +13,12 @@ export class HomePage {
   }
 
   gotoPlay() {
+  	this.navCtrl.pop();
   	this.navCtrl.push(PlayPage);
   }
 
   gotoInstructions() {
+  	this.navCtrl.pop();
   	this.navCtrl.push(InstructionsPage);
   }
 }
