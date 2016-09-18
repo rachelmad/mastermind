@@ -1,3 +1,8 @@
 <ion-row>
-	<pegSet (patternEmit)="checkPattern($event.value)"></pegSet>
+	<ion-column>
+		<pegSet (patternEmit)="checkPattern($event.value)"></pegSet>
+	</ion-column>
+	<ion-column>
+		<hintSet *ngIf="hasHints" [hints]="hints"></hintSet>
+	</ion-column>
 </ion-row>

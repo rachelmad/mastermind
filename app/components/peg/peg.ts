@@ -21,7 +21,8 @@ export class PegComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.coloredPeg = true;
     this.pegColorDisplay = changes['pegColor'].currentValue;
+    console.log(this.pegColorDisplay);
+    this.coloredPeg = (this.pegColorDisplay !== null);
   }
 }

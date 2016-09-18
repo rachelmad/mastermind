@@ -6,6 +6,7 @@ import { COLOR1,
          COLOR4,
          COLOR5,
          COLOR6 } from '../../shared/constants';
+import { HintSetComponent } from '../hintSet/hintSet';
 
 const POSITION_MATCH = 2;
 const COLOR_MATCH = 1;
@@ -15,7 +16,8 @@ const NO_MATCH = 0;
   selector: 'turnSet',
   templateUrl: 'build/components/turnSet/turnSet.html',
   directives: [
-    PegSetComponent
+    PegSetComponent,
+    HintSetComponent
   ]
 })
 export class TurnSetComponent {
@@ -23,6 +25,7 @@ export class TurnSetComponent {
   
   private hints: Array<number> = []; 
   private checked: Array<boolean>;
+  private hasHints: boolean = false;
 
   checkPattern(pattern: Array<string>): void {
     let position = 0;
@@ -31,14 +34,13 @@ export class TurnSetComponent {
       this.checkPeg(peg, position);
       position++;
     })
+    this.hasHints = true;
   }
 
   checkPeg(color: string, position: number): void {
-    debugger;
     let currentPosition = 0;
     this.code.forEach((peg: string) => {
       if (color === peg && this.checked[currentPosition] === false) {
-        console.log(this.checked[currentPosition]);
         if (position === currentPosition) {
           this.hints.push(POSITION_MATCH);
         }
