@@ -1,23 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: "peg",
   templateUrl: 'build/components/peg/peg.html'
 })
-export class PegComponent implements OnInit {
-  @Input() firstColor: string;
+export class PegComponent implements OnInit, OnChanges {
+  @Input() pegColor: string;
 
-  private pegColor: string;
   private coloredPeg: boolean;
+  private pegColorDisplay: string;
 
   ngOnInit() {
-    if (this.firstColor === null) {
+    this.pegColorDisplay = this.pegColor;
+    if (this.pegColor === null) {
       this.coloredPeg = false;
-      this.pegColor = "black";
     }
     else {
       this.coloredPeg = true;
-      this.pegColor = this.firstColor;
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.coloredPeg = true;
+    this.pegColorDisplay = changes['pegColor'].currentValue;
   }
 }

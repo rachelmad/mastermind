@@ -1,14 +1,17 @@
 <ion-row>
 	<ion-column>
-		<peg></peg>
+		<peg [pegColor]="peg1" (click)="showColorOptions(1)"></peg>
 	</ion-column>
 	<ion-column>
-		<peg></peg>
+		<peg [pegColor]="peg2" (click)="showColorOptions(2)"></peg>
 	</ion-column>
 	<ion-column>
-		<peg></peg>
+		<peg [pegColor]="peg3" (click)="showColorOptions(3)"></peg>
 	</ion-column>
 	<ion-column>
-		<peg></peg>
+		<peg [pegColor]="peg4" (click)="showColorOptions(4)"></peg>
 	</ion-column>
+</ion-row>
+<ion-row *ngIf="colorOptionsIsVisible">
+	<pegColorOptions (colorEmit)="changePegColor($event.value)"></pegColorOptions>
 </ion-row>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PegComponent } from '../peg/peg';
 import { COLOR1, 
          COLOR2,
@@ -15,6 +15,8 @@ import { COLOR1,
   ]
 })
 export class PegColorOptionsComponent {
+  @Output() colorEmit = new EventEmitter();
+
   private color1: string = COLOR1;
   private color2: string = COLOR2;
   private color3: string = COLOR3;
@@ -22,7 +24,10 @@ export class PegColorOptionsComponent {
   private color5: string = COLOR5;
   private color6: string = COLOR6;
   
-  constructor() {
+  selectedColor(color: string) {
+    this.colorEmit.emit({
+      value: color
+    });
   }
 }
 
