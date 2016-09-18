@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { PegComponent } from '../peg/peg';
 import { PegColorOptionsComponent } from '../pegColorOptions/pegColorOptions';
 
@@ -11,6 +11,8 @@ import { PegColorOptionsComponent } from '../pegColorOptions/pegColorOptions';
   ]
 })
 export class PegSetComponent {
+  @Output() patternEmit = new EventEmitter();
+
   private peg1: string = null;
   private peg2: string = null;
   private peg3: string = null;
@@ -18,13 +20,14 @@ export class PegSetComponent {
 
   private colorOptionsIsVisible: boolean = false;
   private lastSelected: number;
+  private completeSet: boolean = false;
 
-  showColorOptions(position: number) {
+  showColorOptions(position: number): void {
     this.lastSelected = position;
     this.colorOptionsIsVisible = true;
   }
 
-  changePegColor(color: string) {
+  changePegColor(color: string): void {
     switch (this.lastSelected) {
       case 1:
         this.peg1 = color;
@@ -39,5 +42,18 @@ export class PegSetComponent {
         this.peg4 = color;
         break;
     }
+    this.colorOptionsIsVisible = false;
+
+    this.completeSet = this.isComplete();
+  }
+
+  isComplete(): boolean {
+    return (this.peg1 !== null && this.peg2 !== null && this.peg3 !== null && this.peg4 !== null);
+  }
+
+  submitPattern(): void {
+    this.patternEmit.emit({
+      value: [this.peg1, this.peg2, this.peg3, this.peg4]
+    });
   }
 }
