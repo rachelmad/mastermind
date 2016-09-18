@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { PegSetComponent } from '../../components/pegSet/pegSet';
-import { PegColorOptionsComponent } from '../../components/pegColorOptions/pegColorOptions';
+import { BoardComponent } from '../../components/board/board';
 
 @Component({
   templateUrl: 'build/pages/play/play.html',
-    directives: [
-  	PegSetComponent
+  directives: [
+  	BoardComponent
   ]
 })
 export class PlayPage {
