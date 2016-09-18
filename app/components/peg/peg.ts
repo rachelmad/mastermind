@@ -7,9 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PegComponent implements OnInit {
   @Input() firstColor: string;
 
-  private pegColor;
+  private pegColor: string;
+  private coloredPeg: boolean;
 
   ngOnInit() {
-    this.pegColor = this.firstColor;
+    if (this.firstColor === null) {
+      this.coloredPeg = false;
+      this.pegColor = "black";
+    }
+    else {
+      this.coloredPeg = true;
+      this.pegColor = this.firstColor;
+    }
   }
 }

@@ -1,1 +1,2 @@
-<i class="fa fa-heart" [ngStyle]="{'color': pegColor}"></i>
+<i *ngIf="coloredPeg" class="fa fa-circle" aria-hidden="true" [ngStyle]="{'color': pegColor}"></i>
+<i *ngIf="!coloredPeg" class="fa fa-circle-thin" aria-hidden="true" [ngStyle]="{'color': pegColor}"></i>
