@@ -11,8 +11,8 @@
 	<ion-column>
 		<peg [pegColor]="peg4" [pegSize]="'3x'" (click)="showColorOptions(4)"></peg>
 	</ion-column>
-	<ion-column *ngIf="completeSet">
-		<i class="fa fa-arrow-right" aria-hidden="true" (click)="submitPattern()"></i>
+	<ion-column *ngIf="completeSet" class="padding">
+		<i class="fa fa-arrow-right fa-3x" aria-hidden="true" (click)="submitPattern()"></i>
 	</ion-column>
 </ion-row>
 <ion-row *ngIf="colorOptionsIsVisible">
