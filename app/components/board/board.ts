@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TurnSetComponent } from '../turnSet/turnSet';
 import { COLOR1, 
          COLOR2,
@@ -14,14 +14,13 @@ import { COLOR1,
     TurnSetComponent
   ]
 })
-export class BoardComponent {
+export class BoardComponent implements OnInit {
   private code: Array<string> = [];
 
-  constructor() {
+  ngOnInit() {
     for (var i = 0; i < 4; i++) {
       this.code.push(this.convertNumberToColor(Math.floor(Math.random() * 6) + 1));
     };
-    console.log(this.code);
   }
 
   convertNumberToColor(num: number) {
