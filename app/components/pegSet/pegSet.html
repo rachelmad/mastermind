@@ -1,15 +1,15 @@
 <ion-row>
 	<ion-column>
-		<peg [pegColor]="peg1" (click)="showColorOptions(1)"></peg>
+		<peg [pegColor]="peg1" [pegSize]="'3x'" (click)="showColorOptions(1)"></peg>
 	</ion-column>
 	<ion-column>
-		<peg [pegColor]="peg2" (click)="showColorOptions(2)"></peg>
+		<peg [pegColor]="peg2" [pegSize]="'3x'" (click)="showColorOptions(2)"></peg>
 	</ion-column>
 	<ion-column>
-		<peg [pegColor]="peg3" (click)="showColorOptions(3)"></peg>
+		<peg [pegColor]="peg3" [pegSize]="'3x'" (click)="showColorOptions(3)"></peg>
 	</ion-column>
 	<ion-column>
-		<peg [pegColor]="peg4" (click)="showColorOptions(4)"></peg>
+		<peg [pegColor]="peg4" [pegSize]="'3x'" (click)="showColorOptions(4)"></peg>
 	</ion-column>
 	<ion-column *ngIf="completeSet">
 		<i class="fa fa-arrow-right" aria-hidden="true" (click)="submitPattern()"></i>

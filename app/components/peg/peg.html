@@ -1,2 +1,8 @@
-<i *ngIf="coloredPeg" class="fa fa-circle" aria-hidden="true" [ngStyle]="{'color': pegColorDisplay}"></i>
-<i *ngIf="!coloredPeg" class="fa fa-circle-thin default-icon" aria-hidden="true"></i>
+<div class="padding" *ngIf="pegSize=='2x'"> 
+	<i *ngIf="coloredPeg" class="fa fa-circle fa-2x" aria-hidden="true" [ngStyle]="{'color': pegColorDisplay}"></i>
+	<i *ngIf="!coloredPeg" class="fa fa-circle-thin default-icon fa-2x" aria-hidden="true"></i>
+</div>
+<div class="padding" *ngIf="pegSize=='3x'"> 
+	<i *ngIf="coloredPeg" class="fa fa-circle fa-3x" aria-hidden="true" [ngStyle]="{'color': pegColorDisplay}"></i>
+	<i *ngIf="!coloredPeg" class="fa fa-circle-thin default-icon fa-3x" aria-hidden="true"></i>
+</div>
