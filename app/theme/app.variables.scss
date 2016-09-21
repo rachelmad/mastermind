@@ -25,6 +25,8 @@
 // Both iOS and MD colors can be further customized if colors
 // are different per mode.
 
+$background-color: #e3e3e3;
+
 $colors: (
   primary:    #387ef5,
   secondary:  #32db64,
@@ -40,4 +42,16 @@ $colors: (
 
 .padding-vertical {
 	padding: 10px 0;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+.rounded {
+	border-radius: 8px;
 }
