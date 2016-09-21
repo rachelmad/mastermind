@@ -25,11 +25,15 @@
 // Both iOS and MD colors can be further customized if colors
 // are different per mode.
 
-$background-color: #e3e3e3;
+$background-color: #2C302E;
+$text-color: #909590;
+$button-ios-text-color: #2C302E;
+$button-md-text-color: #2C302E;
+$button-wp-text-color: #2C302E;
 
 $colors: (
-  primary:    #387ef5,
-  secondary:  #32db64,
+  primary:    #9AE19D,
+  secondary:  #909590,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
