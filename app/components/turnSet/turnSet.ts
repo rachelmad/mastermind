@@ -24,72 +24,42 @@ export class TurnSetComponent {
   @Input() code: Array<string>;
   @ViewChild('hintSet') hintSet: HintSetComponent;
   
+  private guess: Array<string>;
   private codeCopy: Array<string> = null;
   private hints: Array<number> = []; 
-  private checked: Array<boolean>;
   private hasHints: boolean = false;
 
-  checkPattern(pattern: Array<string>): void {
+  checkPattern(guess: Array<string>): void {
     let position = 0;
-    this.checked = [false, false, false, false];
+    this.guess = guess;
     this.codeCopy = this.code.slice();
 
-    this.getPositionMatches(pattern);
-    let newPattern = this.removeMatchedPegs(pattern);
-    let newCode = this.removeMatchedPegs(this.codeCopy);
-    this.getColorMatches(newPattern, newCode);
+    this.getPositionMatches(guess);
+    this.getColorMatches(guess, this.codeCopy);
 
     this.hasHints = true;
     this.hintSet.setHints(this.hints);
   }
 
-  getPositionMatches(pattern: Array<string>): void {
-    if (this.code[0] === pattern[0]) {
-      this.hints.push(POSITION_MATCH);
-      this.checked[0] = true;
-    }
-    if (this.code[1] === pattern[1]) {
-      this.hints.push(POSITION_MATCH);
-      this.checked[1] = true;
-    }
-    if (this.code[2] === pattern[2]) {
-      this.hints.push(POSITION_MATCH);
-      this.checked[2] = true;
-    }
-    if (this.code[3] === pattern[3]) {
-      this.hints.push(POSITION_MATCH);
-      this.checked[3] = true;
+  getPositionMatches(guess: Array<string>): void {
+    let originalLength = this.codeCopy.length;
+    for(let i = 0; i < originalLength; i++) {
+      let index = originalLength - i - 1;
+      if (this.code[index] === guess[index]) {
+        this.hints.push(POSITION_MATCH);
+        this.guess.splice(index, 1);
+        this.codeCopy.splice(index, 1);
+      }
     }
   }
 
-  removeMatchedPegs(pattern: Array<string>): Array<string> {
-    let index = 0;
-    let newPattern: Array<string> = pattern;
-    this.checked.forEach((check: boolean) => {
-      if (check) {
-        newPattern = pattern.splice(index, 1);
+  getColorMatches(guess: Array<string>, code: Array<string>) {
+    guess.forEach((guessPeg: string) => {
+      let index = code.indexOf(guessPeg);
+      if (index > -1) {
+        this.hints.push(COLOR_MATCH);
+        code.splice(index, 1);
       };
-      index++;
-    })
-    return newPattern;
-  }
-
-  getColorMatches(pattern: Array<string>, code: Array<string>) {
-    let matched: Array<boolean> = [];
-    pattern.forEach(() => {
-      matched.push(false);
-    })
-
-    let index = 0;
-    pattern.forEach((patternPeg: string) => {
-      code.forEach((codePeg: string) => {
-        if (codePeg === patternPeg && matched[index] === false) {
-          this.hints.push(COLOR_MATCH);
-          matched[index] = true;
-        };
-        index++;
-      });
-      index = 0;
     });
   }
 }
