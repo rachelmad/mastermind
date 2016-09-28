@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { PegComponent } from '../peg/peg';
 import { POSITION_HINT, 
          COLOR_HINT } from '../../shared/constants';
@@ -10,19 +10,17 @@ import { POSITION_HINT,
     PegComponent
   ]
 })
-export class HintSetComponent implements OnChanges {
-  @Input() hints: Array<number>;
+export class HintSetComponent {
   private hint1Color: string = null;
   private hint2Color: string = null;
   private hint3Color: string = null;
   private hint4Color: string = null;
 
-  ngOnChanges(changes: SimpleChanges) {
-    let hintArray = changes['hints'].currentValue;
-    this.hint1Color = this.getColor(hintArray[0]);
-    this.hint2Color = this.getColor(hintArray[1]);
-    this.hint3Color = this.getColor(hintArray[2]);
-    this.hint4Color = this.getColor(hintArray[3]);
+  setHints(hints: Array<number>) {
+    this.hint1Color = this.getColor(hints[0]);
+    this.hint2Color = this.getColor(hints[1]);
+    this.hint3Color = this.getColor(hints[2]);
+    this.hint4Color = this.getColor(hints[3]);
   }
 
   getColor(colorEnum: number): string {

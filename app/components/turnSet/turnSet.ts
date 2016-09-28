@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { PegSetComponent } from '../pegSet/pegSet';
 import { COLOR1, 
          COLOR2,
@@ -22,8 +22,9 @@ const NO_MATCH = 0;
 })
 export class TurnSetComponent {
   @Input() code: Array<string>;
+  @ViewChild('hintSet') hintSet: HintSetComponent;
   
-  private codeCopy: Array<string>;
+  private codeCopy: Array<string> = null;
   private hints: Array<number> = []; 
   private checked: Array<boolean>;
   private hasHints: boolean = false;
@@ -39,6 +40,7 @@ export class TurnSetComponent {
     this.getColorMatches(newPattern, newCode);
 
     this.hasHints = true;
+    this.hintSet.setHints(this.hints);
   }
 
   getPositionMatches(pattern: Array<string>): void {
@@ -87,6 +89,7 @@ export class TurnSetComponent {
         };
         index++;
       });
+      index = 0;
     });
   }
 }

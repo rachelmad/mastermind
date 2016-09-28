@@ -20,7 +20,7 @@ export class PegSetComponent {
 
   private colorOptionsIsVisible: boolean = false;
   private lastSelected: number;
-  private completeSet: boolean = false;
+  private arrowIsVisible: boolean = false;
 
   showColorOptions(position: number): void {
     this.lastSelected = position;
@@ -44,7 +44,7 @@ export class PegSetComponent {
     }
     this.colorOptionsIsVisible = false;
 
-    this.completeSet = this.isComplete();
+    this.arrowIsVisible = this.isComplete();
   }
 
   isComplete(): boolean {
