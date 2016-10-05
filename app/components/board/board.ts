@@ -16,6 +16,7 @@ import { COLOR1,
 })
 export class BoardComponent implements OnInit {
   private code: Array<string> = [];
+  private turnActive: Array<boolean> = [true, false, false, false, false, false];
 
   ngOnInit() {
     for (var i = 0; i < 4; i++) {
@@ -38,5 +39,10 @@ export class BoardComponent implements OnInit {
       case 6:
         return COLOR6;
     }
+  }
+
+  activateNextTurn(currentTurn: number) {
+    this.turnActive[currentTurn] = false;
+    this.turnActive[currentTurn + 1] = true;
   }
 }

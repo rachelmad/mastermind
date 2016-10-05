@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, Output, EventEmitter, SimpleChange } from '@angular/core';
 import { PegSetComponent } from '../pegSet/pegSet';
 import { COLOR1, 
          COLOR2,
@@ -22,12 +22,19 @@ const NO_MATCH = 0;
 })
 export class TurnSetComponent {
   @Input() code: Array<string>;
+  @Input() isActiveInput: boolean;
+  @Output() endTurn: EventEmitter<any> = new EventEmitter();
   @ViewChild('hintSet') hintSet: HintSetComponent;
   
   private guess: Array<string>;
   private codeCopy: Array<string> = null;
   private hints: Array<number> = []; 
   private hasHints: boolean = false;
+  private isActive: boolean;
+
+  ngOnChanges(changes: { [isActiveInput: string]: SimpleChange }) {
+    this.isActive = this.isActiveInput;     
+  }
 
   checkPattern(guess: Array<string>): void {
     let position = 0;
@@ -39,6 +46,9 @@ export class TurnSetComponent {
 
     this.hasHints = true;
     this.hintSet.setHints(this.hints);
+    this.endTurn.emit({
+      value: true
+    });
   }
 
   getPositionMatches(guess: Array<string>): void {
