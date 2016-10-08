@@ -1,0 +1,9 @@
+.active-border {
+	border: 2px solid #909590;
+	border-radius: 8px;
+	padding: 5px;
+}
+
+.inactive-border {
+	border: none;
+}

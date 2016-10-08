@@ -32,6 +32,10 @@ export class TurnSetComponent {
   private hasHints: boolean = false;
   private isActive: boolean;
 
+  constructor() {
+    this.isActive = this.isActiveInput;
+  }
+
   ngOnChanges(changes: { [isActiveInput: string]: SimpleChange }) {
     this.isActive = this.isActiveInput;     
   }

@@ -1,4 +1,4 @@
-<ion-row>
+<ion-row [ngClass]="{'active-border': isActive, 'inactive-border': !isActive}">
 	<ion-column class="padding-vertical">
 		<pegSet (patternEmit)="checkPattern($event.value)"></pegSet>
 	</ion-column>
