@@ -22,9 +22,13 @@ export class PegSetComponent {
   private lastSelected: number;
   private arrowIsVisible: boolean = false;
 
+  toggleColorOptions(): void {
+    this.colorOptionsIsVisible = !this.colorOptionsIsVisible;
+  }
+
   showColorOptions(position: number): void {
     this.lastSelected = position;
-    this.colorOptionsIsVisible = true;
+    this.toggleColorOptions();
   }
 
   changePegColor(color: string): void {
