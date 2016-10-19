@@ -47,6 +47,7 @@ export class TurnSetComponent {
 
     this.getPositionMatches(guess);
     this.getColorMatches(guess, this.codeCopy);
+    this.fillHints();
 
     this.hasHints = true;
     this.hintSet.setHints(this.hints);
@@ -75,5 +76,12 @@ export class TurnSetComponent {
         code.splice(index, 1);
       };
     });
+  }
+
+  fillHints(): void {
+    let noHints: number = 4 - this.hints.length;
+    for (var i = 0; i < noHints; i++) {
+      this.hints.push(NO_MATCH);
+    };
   }
 }

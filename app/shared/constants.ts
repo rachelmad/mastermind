@@ -6,3 +6,4 @@ export const COLOR5 = 'blue';
 export const COLOR6 = 'purple';
 export const POSITION_HINT = 'black';
 export const COLOR_HINT = 'gray';
+export const NO_HINT = 'white';

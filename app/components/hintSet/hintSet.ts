@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PegComponent } from '../peg/peg';
-import { POSITION_HINT, 
+import { NO_HINT,
+         POSITION_HINT, 
          COLOR_HINT } from '../../shared/constants';
 
 @Component({
@@ -25,6 +26,8 @@ export class HintSetComponent {
 
   getColor(colorEnum: number): string {
     switch (colorEnum) {
+      case 0:
+        return NO_HINT;
       case 1:
         return COLOR_HINT;
       case 2: 
