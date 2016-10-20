@@ -18,6 +18,7 @@ export class PegSetComponent {
   private peg3: string = null;
   private peg4: string = null;
 
+  private isClickable: boolean = true;
   private colorOptionsIsVisible: boolean = false;
   private lastSelected: number;
   private arrowIsVisible: boolean = false;
@@ -27,8 +28,10 @@ export class PegSetComponent {
   }
 
   showColorOptions(position: number): void {
-    this.lastSelected = position;
-    this.toggleColorOptions();
+    if (this.isClickable) {
+      this.lastSelected = position;
+      this.toggleColorOptions();
+    }
   }
 
   changePegColor(color: string): void {
@@ -56,6 +59,7 @@ export class PegSetComponent {
   }
 
   submitPattern(): void {
+    this.isClickable = false;
     this.patternEmit.emit({
       value: [this.peg1, this.peg2, this.peg3, this.peg4]
     });
