@@ -24,6 +24,7 @@ export class TurnSetComponent {
   @Input() code: Array<string>;
   @Input() isActiveInput: boolean;
   @Output() endTurn: EventEmitter<any> = new EventEmitter();
+  @Output() winEmit: EventEmitter<any> = new EventEmitter();
   @ViewChild('hintSet') hintSet: HintSetComponent;
   
   private guess: Array<string>;
@@ -83,5 +84,9 @@ export class TurnSetComponent {
     for (var i = 0; i < noHints; i++) {
       this.hints.push(NO_MATCH);
     };
+  }
+
+  emitWin(): void {
+    this.winEmit.emit(true);
   }
 }

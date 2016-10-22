@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { PegComponent } from '../peg/peg';
 import { NO_HINT,
          POSITION_HINT, 
@@ -16,12 +16,15 @@ export class HintSetComponent {
   private hint2Color: string = null;
   private hint3Color: string = null;
   private hint4Color: string = null;
+  @Output() winEmit: EventEmitter<any> = new EventEmitter();
 
   setHints(hints: Array<number>) {
     this.hint1Color = this.getColor(hints[0]);
     this.hint2Color = this.getColor(hints[1]);
     this.hint3Color = this.getColor(hints[2]);
     this.hint4Color = this.getColor(hints[3]);
+
+    this.checkWin();
   }
 
   getColor(colorEnum: number): string {
@@ -35,5 +38,14 @@ export class HintSetComponent {
       default:
         return null;
     }
+  }
+
+  checkWin(): void {
+    if (this.hint1Color == POSITION_HINT, 
+            this.hint2Color == POSITION_HINT,
+            this.hint3Color == POSITION_HINT,
+            this.hint4Color == POSITION_HINT) {
+      this.winEmit.emit(true);
+    };
   }
 }
