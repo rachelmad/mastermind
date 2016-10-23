@@ -23,6 +23,7 @@ const NO_MATCH = 0;
 export class TurnSetComponent {
   @Input() code: Array<string>;
   @Input() isActiveInput: boolean;
+  @Input() isLastTurn: boolean;
   @Output() endTurn: EventEmitter<any> = new EventEmitter();
   @Output() winEmit: EventEmitter<any> = new EventEmitter();
   @ViewChild('hintSet') hintSet: HintSetComponent;
@@ -86,7 +87,16 @@ export class TurnSetComponent {
     };
   }
 
-  emitWin(): void {
-    this.winEmit.emit(true);
+  emitWin(result: boolean): void {
+    if (result) {
+      this.winEmit.emit({
+        value: true
+      });
+    }
+    else if (this.isLastTurn && !result) {
+      this.winEmit.emit({
+        value: false
+      });
+    }
   }
 }

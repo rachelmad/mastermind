@@ -1,25 +1,43 @@
 <ion-row>
-	<turnSet [code]="code" [isActiveInput]="turnActive[0]" (endTurn)="activateNextTurn(0)"
-			 (winEmit)="win()"></turnSet>
+	<turnSet [code]="code" 
+			 [isActiveInput]="turnActive[0]"
+			 [isLastTurn]="falseHack" 
+			 (endTurn)="activateNextTurn(0)"
+			 (winEmit)="win($event.value)"></turnSet>
 </ion-row>
 <ion-row>
-	<turnSet [code]="code" [isActiveInput]="turnActive[1]" (endTurn)="activateNextTurn(1)"
-			 (winEmit)="win()"></turnSet>
+	<turnSet [code]="code" 
+			 [isActiveInput]="turnActive[1]"
+			 [isLastTurn]="falseHack" 
+			 (endTurn)="activateNextTurn(1)"
+			 (winEmit)="win($event.value)"></turnSet>
 </ion-row>
 <ion-row>
-	<turnSet [code]="code" [isActiveInput]="turnActive[2]" (endTurn)="activateNextTurn(2)"
-			 (winEmit)="win()"></turnSet>
+	<turnSet [code]="code" 
+			 [isActiveInput]="turnActive[2]"
+			 [isLastTurn]="falseHack" 
+			 (endTurn)="activateNextTurn(2)"
+			 (winEmit)="win($event.value)"></turnSet>
 </ion-row>
 <ion-row>
-	<turnSet [code]="code" [isActiveInput]="turnActive[3]" (endTurn)="activateNextTurn(3)"
-			 (winEmit)="win()"></turnSet>
+	<turnSet [code]="code" 
+			 [isActiveInput]="turnActive[3]"
+			 [isLastTurn]="falseHack" 
+			 (endTurn)="activateNextTurn(3)"
+			 (winEmit)="win($event.value)"></turnSet>
 </ion-row>
 <ion-row>
-	<turnSet [code]="code" [isActiveInput]="turnActive[4]" (endTurn)="activateNextTurn(4)"
-			 (winEmit)="win()"></turnSet>
+	<turnSet [code]="code" 
+			 [isActiveInput]="turnActive[4]"
+			 [isLastTurn]="falseHack" 
+			 (endTurn)="activateNextTurn(4)"
+			 (winEmit)="win($event.value)"></turnSet>
 </ion-row>
 <ion-row>
-	<turnSet [code]="code" [isActiveInput]="turnActive[5]" (endTurn)="activateNextTurn(5)"
-			 (winEmit)="win()"></turnSet>
+	<turnSet [code]="code" 
+			 [isActiveInput]="turnActive[5]"
+			 [isLastTurn]="trueHack" 
+			 (endTurn)="activateNextTurn(5)"
+			 (winEmit)="win($event.value)"></turnSet>
 </ion-row>
 {{ isWinner }}

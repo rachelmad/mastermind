@@ -45,7 +45,14 @@ export class HintSetComponent {
             this.hint2Color == POSITION_HINT,
             this.hint3Color == POSITION_HINT,
             this.hint4Color == POSITION_HINT) {
-      this.winEmit.emit(true);
+      this.winEmit.emit({
+        value: true
+      });
+    }
+    else {
+      this.winEmit.emit({
+        value: false
+      });
     };
   }
 }

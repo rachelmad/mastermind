@@ -3,6 +3,6 @@
 		<pegSet (patternEmit)="checkPattern($event.value)"></pegSet>
 	</ion-column>
 	<ion-column>
-		<hintSet #hintSet (winEmit)="emitWin()"></hintSet>
+		<hintSet #hintSet (winEmit)="emitWin($event.value)"></hintSet>
 	</ion-column>
 </ion-row>
