@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, SimpleChange } from '@angular/core';
 import { PegComponent } from '../peg/peg';
 import { PegColorOptionsComponent } from '../pegColorOptions/pegColorOptions';
 
@@ -11,6 +11,7 @@ import { PegColorOptionsComponent } from '../pegColorOptions/pegColorOptions';
   ]
 })
 export class PegSetComponent {
+  @Input() isActiveInput: boolean;
   @Output() patternEmit = new EventEmitter();
 
   private peg1: string = null;
@@ -18,17 +19,26 @@ export class PegSetComponent {
   private peg3: string = null;
   private peg4: string = null;
 
+  private isActive: boolean;
   private isClickable: boolean = true;
   private colorOptionsIsVisible: boolean = false;
   private lastSelected: number;
   private arrowIsVisible: boolean = false;
+
+  constructor() {
+    this.isActive = this.isActiveInput;
+  }
+
+  setActive(activeBoolean: boolean) {
+    this.isActive = activeBoolean;
+  }
 
   toggleColorOptions(): void {
     this.colorOptionsIsVisible = !this.colorOptionsIsVisible;
   }
 
   showColorOptions(position: number): void {
-    if (this.isClickable) {
+    if (this.isClickable && this.isActive) {
       this.lastSelected = position;
       this.toggleColorOptions();
     }

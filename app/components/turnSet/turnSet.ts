@@ -26,20 +26,22 @@ export class TurnSetComponent {
   @Input() isLastTurn: boolean;
   @Output() endTurn: EventEmitter<any> = new EventEmitter();
   @Output() winEmit: EventEmitter<any> = new EventEmitter();
+  @ViewChild('pegSet') pegSet: PegSetComponent;
   @ViewChild('hintSet') hintSet: HintSetComponent;
   
   private guess: Array<string>;
   private codeCopy: Array<string> = null;
   private hints: Array<number> = []; 
   private hasHints: boolean = false;
-  private isActive: boolean;
+  private isActive: boolean = false;
 
   constructor() {
     this.isActive = this.isActiveInput;
   }
 
   ngOnChanges(changes: { [isActiveInput: string]: SimpleChange }) {
-    this.isActive = this.isActiveInput;     
+    this.isActive = this.isActiveInput;
+    this.pegSet.setActive(this.isActiveInput);     
   }
 
   checkPattern(guess: Array<string>): void {
