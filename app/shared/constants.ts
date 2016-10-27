@@ -1,9 +1,9 @@
-export const COLOR1 = 'red';
-export const COLOR2 = 'orange';
-export const COLOR3 = 'yellow';
-export const COLOR4 = 'green';
-export const COLOR5 = 'blue';
-export const COLOR6 = 'purple';
+export const COLOR1 = "#9CFFD9";
+export const COLOR2 = "#177E89";
+export const COLOR3 = "#FDE74C";
+export const COLOR4 = "#7BC950";
+export const COLOR5 = "#574D68";
+export const COLOR6 = "#193C56";
 export const POSITION_HINT = 'black';
 export const COLOR_HINT = 'gray';
 export const NO_HINT = 'white';
