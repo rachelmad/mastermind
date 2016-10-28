@@ -1,20 +1,32 @@
-<ion-row class="playPegs">
+<ion-row>
 	<ion-column>
-		<peg [pegColor]="peg1" [pegSize]="'3x'" (click)="showColorOptions(1)"></peg>
-	</ion-column>
-	<ion-column>
-		<peg [pegColor]="peg2" [pegSize]="'3x'" (click)="showColorOptions(2)"></peg>
-	</ion-column>
-	<ion-column>
-		<peg [pegColor]="peg3" [pegSize]="'3x'" (click)="showColorOptions(3)"></peg>
-	</ion-column>
-	<ion-column>
-		<peg [pegColor]="peg4" [pegSize]="'3x'" (click)="showColorOptions(4)"></peg>
+		<ion-row class="playPegs">
+			<ion-column class="padding">
+				<peg [pegColor]="peg1" 
+					 [pegSize]="'3x'" 
+					 (click)="showColorOptions(1)"></peg>
+			</ion-column>
+			<ion-column class="padding">
+				<peg [pegColor]="peg2" 
+					 [pegSize]="'3x'" 
+					 (click)="showColorOptions(2)"></peg>
+			</ion-column>
+			<ion-column class="padding">
+				<peg [pegColor]="peg3" 
+					 [pegSize]="'3x'" 
+					 (click)="showColorOptions(3)"></peg>
+			</ion-column>
+			<ion-column class="padding">
+				<peg [pegColor]="peg4" 
+					 [pegSize]="'3x'" 
+					 (click)="showColorOptions(4)"></peg>
+			</ion-column>
+		</ion-row>
+		<ion-row *ngIf="colorOptionsIsVisible" class="justify-center">
+			<pegColorOptions (colorEmit)="changePegColor($event.value)"></pegColorOptions>
+		</ion-row>
 	</ion-column>
 	<ion-column class="padding" [ngClass]="{'showArrow': arrowIsVisible, 'hideArrow': !arrowIsVisible}">
 		<i class="fa fa-arrow-right fa-3x" aria-hidden="true" (click)="submitPattern()"></i>
 	</ion-column>
-</ion-row>
-<ion-row *ngIf="colorOptionsIsVisible">
-	<pegColorOptions (colorEmit)="changePegColor($event.value)"></pegColorOptions>
 </ion-row>
